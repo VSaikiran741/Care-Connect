@@ -65,13 +65,20 @@ Follow these step-by-step instructions to get CareConnect running on your local 
    npm install
    ```
 
-3. **Configure Database**
+3. **Configure Environment Variables**
+   - Create a `.env` file in the `backend/` directory with the following variables:
+     ```env
+     PORT=3000
+     MONGODB_URI=mongodb://localhost:27017
+     SESSION_SECRET=your_super_secret_key
+     GOOGLE_MAPS_API_KEY=your_google_maps_api_key
+     NODE_ENV=development
+     ```
    - Ensure your local MongoDB instance is running on `mongodb://localhost:27017`.
-   - The application will automatically create the `careconnect` database with `users` and `requests` collections when needed.
 
 4. **Start the Server**
    ```bash
-   node server.js
+   npm start
    ```
 
 5. **Access the Application**
@@ -92,6 +99,7 @@ Follow these step-by-step instructions to get CareConnect running on your local 
 | `/api/logout` | `POST` | Destroy the current user session. | None |
 | `/api/requests` | `POST` | Create a new emergency request. | `{ "name": "Jane", "emergencyType": "Medical", "location": "17.437,78.448", "description": "Needs first aid", "shareLocation": true, "timestamp": "2023-10-01T12:00:00.000Z" }` |
 | `/api/requests` | `GET` | Retrieve a list of all active emergency requests. | None |
+| `/api/config/maps` | `GET` | Retrieve the Google Maps API Key safely. | None |
 
 ---
 
@@ -99,16 +107,20 @@ Follow these step-by-step instructions to get CareConnect running on your local 
 
 ```text
 Care-Connect/
-├── bg.jpeg                # Background image asset for landing pages
-├── dashboard.html         # Volunteer dashboard for viewing & accepting requests
-├── download.jpg           # CareConnect logo / branding asset
-├── index.html             # Landing page (About, Login, Signup forms)
-├── package.json           # Node.js project metadata and dependency registry
-├── package-lock.json      # Exact dependency tree overview
-├── request.html           # Emergency request submission form for users
-├── script.js              # Frontend logic, API integration, and Google Maps init
-├── server.js              # Node.js + Express backend server and API endpoints
-└── style.css              # Global styles and responsive layout definitions
+├── backend/
+│   ├── .env                 # Environment variables (Secrets & API Keys)
+│   └── server.js            # Node.js + Express backend server
+├── frontend/
+│   ├── assets/              # Logos and images
+│   ├── js/                  # Modular JavaScript files (api, auth, map, ui)
+│   ├── style.css            # Stylesheets
+│   ├── index.html           # Landing page
+│   ├── login.html           # Login portal
+│   ├── signup.html          # Registration portal
+│   ├── request.html         # Emergency request dashboard (Users)
+│   └── dashboard.html       # Emergency viewer dashboard (Volunteers)
+├── package.json             # NPM dependencies
+└── package-lock.json        # NPM lockfile
 ```
 
 ---

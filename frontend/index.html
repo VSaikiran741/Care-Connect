@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareConnect - Emergency Help Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav container">
+            <a href="index.html" class="logo">
+                <img src="assets/download.jpg" alt="CareConnect Logo" class="logo-image" />
+                <h1>CareConnect</h1>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html#about" class="nav-link">About</a></li>
+                <li><a href="login.html" class="nav-link">Login</a></li>
+                <li><a href="signup.html" class="nav-link">Sign Up</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Welcome to CareConnect</h2>
+            <p>Your Emergency Help Platform - Connecting those in need with those who can help</p>
+            <div class="button-group">
+                <a href="#about" class="button button-primary">Learn More</a>
+                <a href="login.html" class="button button-primary">Get Help Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- UI Message Toast Container -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <main class="container">
+        <section id="about" class="section active">
+            <h2 class="section-title">About CareConnect</h2>
+            <p>CareConnect is a platform dedicated to connecting people in emergency situations with qualified volunteers and professional help. Our mission is to create a safer, more connected community where help is always just a click away.</p>
+        </section>
+
+        <section id="contact" class="section active">
+            <h2 class="section-title">Contact Us</h2>
+            <p>If you have any questions, feel free to reach out to us at <a href="mailto:support@careconnect.com">support@careconnect.com</a>.</p>
+        </section>
+
+        <section id="help" class="section active">
+            <h2 class="section-title">Help</h2>
+            <p>For immediate assistance, please use the "Get Help Now" button to login and request help, or call our emergency hotline at <a href="tel:100">100</a>.</p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>Copyright © 2025 CareConnect. All rights reserved.</p>
+    </footer>
+
+    <script src="js/ui.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

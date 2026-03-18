@@ -18,15 +18,19 @@
     <header class="header">
         <nav class="nav container">
             <a href="index.html" class="logo">
-                <img src="download.jpg" alt="CareConnect Logo" class="logo-image" />
+                <img src="assets/download.jpg" alt="CareConnect Logo" class="logo-image" />
                 <h1>CareConnect</h1>
             </a>
             <ul class="nav-links">
-                <li><a href="index.html#about" class="nav-link">About</a></li>
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="dashboard.html" class="nav-link hidden" id="dashboardLink">Dashboard</a></li>
                 <li><button id="logoutButton" class="button button-primary">Logout</button></li>
             </ul>
         </nav>
     </header>
+
+    <!-- UI Message Toast Container -->
+    <div id="toast-container" class="toast-container"></div>
 
     <main class="container" style="padding-top: 6rem;">
         <section class="section active">
@@ -49,7 +53,7 @@
                 <div class="form-group">
                     <label for="location">Location (Latitude, Longitude)</label>
                     <input type="text" id="location" readonly>
-                    <button type="button" id="gpsButton" class="button button-primary">Use My Location</button>
+                    <button type="button" id="gpsButton" class="button button-primary" style="margin-bottom: 0.5rem;">Use My Location</button>
                     <div id="map"></div>
                 </div>
                 <div class="form-group">
@@ -62,7 +66,7 @@
                         Share live location with responders
                     </label>
                 </div>
-                <button type="submit" class="button button-primary">Submit Request</button>
+                <button type="submit" class="button button-primary" id="requestSubmitBtn">Submit Request</button>
             </form>
         </section>
     </main>
@@ -71,7 +75,9 @@
         <p>Copyright © 2025 CareConnect. All rights reserved.</p>
     </footer>
 
-    <script src="script.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDTWs0CaOew0OJeWO-xKIHDE8W0evl8DAs&callback=initMap" async defer></script>
+    <script src="js/ui.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/map.js" data-page="request"></script>
 </body>
 </html>

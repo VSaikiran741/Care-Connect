@@ -42,14 +42,17 @@
             border-radius: 4px;
             cursor: pointer;
             transition: var(--transition);
+            border-left: 4px solid var(--primary-teal);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
         .requests-list div:hover {
-            background-color: #e0e0e0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
         #map {
             height: 400px;
             width: 100%;
             margin-bottom: 1rem;
+            border-radius: 8px;
         }
         .modal {
             display: none;
@@ -61,6 +64,7 @@
             background-color: rgba(0, 0, 0, 0.5);
             justify-content: center;
             align-items: center;
+            z-index: 1000;
         }
         .modal-content {
             background-color: var(--white);
@@ -68,16 +72,33 @@
             border-radius: 8px;
             max-width: 500px;
             width: 90%;
+            position: relative;
         }
         .close {
-            float: right;
+            position: absolute;
+            right: 1.5rem;
+            top: 1rem;
             font-size: 1.5rem;
             cursor: pointer;
+            color: #666;
+        }
+        .close:hover {
+            color: #000;
+        }
+        .profile-image {
+            text-align: center;
+            margin-bottom: 1rem;
         }
         .profile-image img {
-            width: 50px;
-            height: 50px;
+            width: 70px;
+            height: 70px;
             border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--primary-teal);
+        }
+        #volunteerName {
+            text-align: center;
+            margin-bottom: 1.5rem;
         }
     </style>
 </head>
@@ -85,31 +106,35 @@
     <header class="header">
         <nav class="nav container">
             <a href="index.html" class="logo">
-                <img src="download.jpg" alt="CareConnect Logo" class="logo-image" />
+                <img src="assets/download.jpg" alt="CareConnect Logo" class="logo-image" />
                 <h1>CareConnect</h1>
             </a>
             <ul class="nav-links">
-                <li><a href="index.html#about" class="nav-link">About</a></li>
+                <li><a href="index.html" class="nav-link">Home</a></li>
                 <li><button id="logoutButton" class="button button-primary">Logout</button></li>
             </ul>
         </nav>
     </header>
 
+    <!-- UI Message Toast Container -->
+    <div id="toast-container" class="toast-container"></div>
+
     <main class="container dashboard-container">
         <aside class="sidebar">
             <div class="profile-image">
-                <img src="" alt="Profile">
+                <img src="" alt="Profile" id="profileImg" onerror="this.style.display='none'">
             </div>
-            <h3 id="volunteerName"></h3>
+            <h3 id="volunteerName">Loading...</h3>
             <div class="nav-item active" data-panel="dashboard">Dashboard</div>
-            <div class="nav-item" data-panel="requests">Requests</div>
-            <div class="nav-item" data-panel="settings">Logout</div>
+            <div class="nav-item" data-panel="settings" id="sidebarLogoutBtn">Logout</div>
         </aside>
 
         <div class="content-grid">
             <section class="requests-list" style="display: block;">
                 <h2 class="section-title">Active Requests</h2>
-                <div id="requestList"></div>
+                <div id="requestList">
+                    <p>Loading active requests...</p>
+                </div>
             </section>
             <section class="map-container" style="display: block;">
                 <h2 class="section-title">Request Locations</h2>
@@ -123,9 +148,9 @@
             <span class="close">&times;</span>
             <h2>Request Details</h2>
             <div id="requestDetails"></div>
-            <div class="modal-actions">
-                <button id="acceptRequest" class="button button-primary">Accept</button>
-                <button id="declineRequest" class="button button-primary">Decline</button>
+            <div class="modal-actions" style="margin-top: 1.5rem; display: flex; gap: 1rem;">
+                <button id="acceptRequest" class="button button-primary">Accept Request</button>
+                <button id="declineRequest" class="button" style="background-color: #eee; color: #333;">Decline</button>
             </div>
         </div>
     </div>
@@ -134,8 +159,9 @@
         <p>Copyright © 2025 CareConnect. All rights reserved.</p>
     </footer>
 
-    <script src="script.js"></script>
-    <!-- IMPORTANT: Replace YOUR_API_KEY with your actual Google Maps Key when running locally, but DO NOT upload the real key to GitHub public repo -->
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY_HERE&callback=initDashboardMaps" ></script>
+    <script src="js/ui.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/map.js" data-page="dashboard"></script>
 </body>
 </html>
